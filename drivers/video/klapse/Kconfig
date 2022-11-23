@@ -1,6 +1,0 @@
-config KLAPSE
-    bool CONFIG_KLAPSE
-    default y
-    help
-        A simple rgb dynamic lapsing module similar to LineageOS' livedisplay
-
