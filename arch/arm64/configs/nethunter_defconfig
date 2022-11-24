@@ -285,9 +285,8 @@ CONFIG_ARCH_SUPPORTS_THINLTO=y
 CONFIG_LTO_NONE=y
 # CONFIG_LTO_CLANG is not set
 CONFIG_ARCH_SUPPORTS_SHADOW_CALL_STACK=y
-# CONFIG_ROP_PROTECTION_NONE is not set
-CONFIG_SHADOW_CALL_STACK=y
-# CONFIG_SHADOW_CALL_STACK_VMAP is not set
+CONFIG_ROP_PROTECTION_NONE=y
+# CONFIG_SHADOW_CALL_STACK is not set
 CONFIG_HAVE_CONTEXT_TRACKING=y
 CONFIG_HAVE_VIRT_CPU_ACCOUNTING_GEN=y
 CONFIG_HAVE_IRQ_TIME_ACCOUNTING=y
@@ -1247,7 +1246,8 @@ CONFIG_SOCKEV_NLMCAST=y
 # CONFIG_CAN is not set
 CONFIG_BT=y
 CONFIG_BT_BREDR=y
-# CONFIG_BT_RFCOMM is not set
+CONFIG_BT_RFCOMM=y
+CONFIG_BT_RFCOMM_TTY=y
 # CONFIG_BT_BNEP is not set
 # CONFIG_BT_HIDP is not set
 CONFIG_BT_HS=y
@@ -1259,12 +1259,31 @@ CONFIG_BT_DEBUGFS=y
 #
 # Bluetooth device drivers
 #
-# CONFIG_BT_HCIBTUSB is not set
-# CONFIG_BT_HCIUART is not set
-# CONFIG_BT_HCIBCM203X is not set
-# CONFIG_BT_HCIBFUSB is not set
-# CONFIG_BT_HCIVHCI is not set
+CONFIG_BT_INTEL=y
+CONFIG_BT_BCM=y
+CONFIG_BT_RTL=y
+CONFIG_BT_HCIBTUSB=y
+CONFIG_BT_HCIBTUSB_BCM=y
+CONFIG_BT_HCIBTUSB_RTL=y
+CONFIG_BT_HCIUART=y
+CONFIG_BT_HCIUART_SERDEV=y
+CONFIG_BT_HCIUART_H4=y
+# CONFIG_BT_HCIUART_NOKIA is not set
+# CONFIG_BT_HCIUART_BCSP is not set
+# CONFIG_BT_HCIUART_ATH3K is not set
+# CONFIG_BT_HCIUART_LL is not set
+# CONFIG_BT_HCIUART_3WIRE is not set
+# CONFIG_BT_HCIUART_INTEL is not set
+# CONFIG_BT_HCIUART_BCM is not set
+# CONFIG_BT_HCIUART_QCA is not set
+# CONFIG_BT_HCIUART_AG6XX is not set
+# CONFIG_BT_HCIUART_MRVL is not set
+CONFIG_BT_HCIBCM203X=y
+CONFIG_BT_HCIBPA10X=y
+CONFIG_BT_HCIBFUSB=y
+CONFIG_BT_HCIVHCI=y
 # CONFIG_BT_MRVL is not set
+# CONFIG_BT_ATH3K is not set
 CONFIG_MSM_BT_POWER=y
 CONFIG_BTFM_SLIM=y
 CONFIG_BTFM_SLIM_WCN3990=y
@@ -4278,6 +4297,23 @@ CONFIG_TYPEC_TCPM=y
 # CONFIG_TYPEC_FUSB302 is not set
 # CONFIG_TYPEC_UCSI is not set
 
+#
+# USB Type-C Alternate Mode drivers
+#
+# CONFIG_TYPEC_DP_ALTMODE is not set
+
+#
+# USB Type-C Alternate Mode drivers
+#
+
+#
+# USB Type-C Multiplexer/DeMultiplexer Switch support
+#
+# CONFIG_TYPEC_MUX_PI3USB30532 is not set
+
+#
+# USB Power Delivery
+#
 CONFIG_USB_PD=y
 # CONFIG_USB_PD_POLICY is not set
 CONFIG_USB_PD_ENGINE=y
@@ -4293,6 +4329,9 @@ CONFIG_LEDS_CLASS=y
 # CONFIG_LEDS_CLASS_FLASH is not set
 # CONFIG_LEDS_BRIGHTNESS_HW_CHANGED is not set
 
+#
+# LED drivers
+#
 # CONFIG_LEDS_BCM6328 is not set
 # CONFIG_LEDS_BCM6358 is not set
 # CONFIG_LEDS_LM3530 is not set
@@ -4323,13 +4362,18 @@ CONFIG_LEDS_QPNP_HAPTICS=y
 # CONFIG_LEDS_IS31FL32XX is not set
 # CONFIG_LEDS_QCOM_CLK is not set
 
-
+#
+# LED driver for blink(1) USB RGB LED is under Special HID drivers (HID_THINGM)
+#
 # CONFIG_LEDS_BLINKM is not set
 # CONFIG_LEDS_QTI_TRI_LED is not set
 # CONFIG_LEDS_SYSCON is not set
 # CONFIG_LEDS_USER is not set
 # CONFIG_LEDS_QPNP_VIBRATOR_LDO is not set
 
+#
+# LED Triggers
+#
 CONFIG_LEDS_TRIGGERS=y
 CONFIG_LEDS_TRIGGER_TIMER=y
 # CONFIG_LEDS_TRIGGER_ONESHOT is not set
@@ -4339,7 +4383,9 @@ CONFIG_LEDS_TRIGGER_TIMER=y
 # CONFIG_LEDS_TRIGGER_GPIO is not set
 # CONFIG_LEDS_TRIGGER_DEFAULT_ON is not set
 
-
+#
+# iptables trigger is under Netfilter config (LED target)
+#
 CONFIG_LEDS_TRIGGER_TRANSIENT=y
 # CONFIG_LEDS_TRIGGER_CAMERA is not set
 # CONFIG_LEDS_TRIGGER_PANIC is not set
@@ -4369,14 +4415,18 @@ CONFIG_RTC_SYSTOHC_DEVICE="rtc0"
 # CONFIG_RTC_DEBUG is not set
 CONFIG_RTC_NVMEM=y
 
-
+#
+# RTC interfaces
+#
 CONFIG_RTC_INTF_SYSFS=y
 CONFIG_RTC_INTF_PROC=y
 CONFIG_RTC_INTF_DEV=y
 # CONFIG_RTC_INTF_DEV_UIE_EMUL is not set
 # CONFIG_RTC_DRV_TEST is not set
 
-
+#
+# I2C RTC drivers
+#
 # CONFIG_RTC_DRV_ABB5ZES3 is not set
 # CONFIG_RTC_DRV_ABX80X is not set
 # CONFIG_RTC_DRV_DS1307 is not set
@@ -4402,7 +4452,9 @@ CONFIG_RTC_INTF_DEV=y
 # CONFIG_RTC_DRV_EM3027 is not set
 # CONFIG_RTC_DRV_RV8803 is not set
 
-
+#
+# SPI RTC drivers
+#
 # CONFIG_RTC_DRV_M41T93 is not set
 # CONFIG_RTC_DRV_M41T94 is not set
 # CONFIG_RTC_DRV_DS1302 is not set
@@ -4420,11 +4472,16 @@ CONFIG_RTC_INTF_DEV=y
 # CONFIG_RTC_DRV_MCP795 is not set
 CONFIG_RTC_I2C_AND_SPI=y
 
+#
+# SPI and I2C RTC drivers
+#
 # CONFIG_RTC_DRV_DS3232 is not set
 # CONFIG_RTC_DRV_PCF2127 is not set
 # CONFIG_RTC_DRV_RV3029C2 is not set
 
-
+#
+# Platform RTC drivers
+#
 # CONFIG_RTC_DRV_DS1286 is not set
 # CONFIG_RTC_DRV_DS1511 is not set
 # CONFIG_RTC_DRV_DS1553 is not set
@@ -4441,7 +4498,9 @@ CONFIG_RTC_I2C_AND_SPI=y
 # CONFIG_RTC_DRV_V3020 is not set
 # CONFIG_RTC_DRV_ZYNQMP is not set
 
-
+#
+# on-CPU RTC drivers
+#
 # CONFIG_RTC_DRV_PL030 is not set
 # CONFIG_RTC_DRV_PL031 is not set
 # CONFIG_RTC_DRV_FTRTC010 is not set
@@ -4530,36 +4589,91 @@ CONFIG_STAGING=y
 # CONFIG_RTS5208 is not set
 # CONFIG_VT6655 is not set
 # CONFIG_VT6656 is not set
+
+#
+# IIO staging drivers
+#
+
+#
+# Accelerometers
+#
 # CONFIG_ADIS16201 is not set
 # CONFIG_ADIS16203 is not set
 # CONFIG_ADIS16209 is not set
 # CONFIG_ADIS16240 is not set
+
+#
+# Analog to digital converters
+#
 # CONFIG_AD7606 is not set
 # CONFIG_AD7780 is not set
 # CONFIG_AD7816 is not set
 # CONFIG_AD7192 is not set
 # CONFIG_AD7280 is not set
+
+#
+# Analog digital bi-direction converters
+#
+# CONFIG_ADT7316 is not set
+
+#
+# Capacitance to digital converters
+#
 # CONFIG_AD7150 is not set
 # CONFIG_AD7152 is not set
 # CONFIG_AD7746 is not set
+
+#
+# Direct Digital Synthesis
+#
 # CONFIG_AD9832 is not set
 # CONFIG_AD9834 is not set
+
+#
+# Digital gyroscope sensors
+#
 # CONFIG_ADIS16060 is not set
+
+#
+# Network Analyzer, Impedance Converters
+#
+# CONFIG_AD5933 is not set
+
+#
+# Light sensors
+#
+# CONFIG_TSL2x7x is not set
+
+#
+# Active energy metering IC
+#
 # CONFIG_ADE7753 is not set
 # CONFIG_ADE7754 is not set
 # CONFIG_ADE7758 is not set
 # CONFIG_ADE7759 is not set
 # CONFIG_ADE7854 is not set
 
-
+#
+# Resolver to digital converters
+#
 # CONFIG_AD2S90 is not set
 # CONFIG_AD2S1200 is not set
 # CONFIG_AD2S1210 is not set
+
+#
+# Triggers - standalone
+#
 # CONFIG_FB_SM750 is not set
 # CONFIG_FB_XGI is not set
 
+#
+# Speakup console speech
+#
 # CONFIG_STAGING_MEDIA is not set
 
+#
+# Android
+#
 CONFIG_ASHMEM=y
 # CONFIG_ANDROID_VSOC is not set
 # CONFIG_ANDROID_LOW_MEMORY_KILLER is not set
@@ -4582,14 +4696,24 @@ CONFIG_ION_DEFER_FREE_NO_SCHED_IDLE=y
 # CONFIG_GREYBUS is not set
 # CONFIG_CRYPTO_DEV_CCREE is not set
 
-
+#
+# USB Power Delivery and Type-C drivers
+#
 # CONFIG_PI433 is not set
 # CONFIG_S2MPG01 is not set
 CONFIG_GOOGLE_WLAN_MAC=y
+
+#
+# Qualcomm Atheros CLD WLAN module
+#
 CONFIG_QCA_CLD_WLAN=y
 CONFIG_QCA_CLD_WLAN_PROFILE="default"
 # CONFIG_GOLDFISH is not set
 # CONFIG_CHROME_PLATFORMS is not set
+
+#
+# Qualcomm technologies inc. MSM specific device drivers
+#
 CONFIG_MSM_EXT_DISPLAY=y
 CONFIG_QCOM_GENI_SE=y
 CONFIG_QPNP_REVID=y
@@ -4620,6 +4744,10 @@ CONFIG_MSM_11AD=y
 CONFIG_CLKDEV_LOOKUP=y
 CONFIG_HAVE_CLK_PREPARE=y
 CONFIG_COMMON_CLK=y
+
+#
+# Common Clock Framework
+#
 # CONFIG_COMMON_CLK_VERSATILE is not set
 # CONFIG_CLK_HSDK is not set
 # CONFIG_COMMON_CLK_SI5351 is not set
@@ -4713,6 +4841,10 @@ CONFIG_MSM_GPUCC_SDMMAGPIE=y
 # CONFIG_COMMON_CLK_MSM is not set
 CONFIG_HWSPINLOCK=y
 CONFIG_HWSPINLOCK_QCOM=y
+
+#
+# Clock Source drivers
+#
 CONFIG_TIMER_OF=y
 CONFIG_TIMER_PROBE=y
 CONFIG_ARM_ARCH_TIMER=y
@@ -4741,6 +4873,10 @@ CONFIG_QTI_RPMH_MBOX=y
 CONFIG_MSM_QMP=y
 CONFIG_IOMMU_API=y
 CONFIG_IOMMU_SUPPORT=y
+
+#
+# Generic IOMMU Pagetable Support
+#
 CONFIG_IOMMU_IO_PGTABLE=y
 CONFIG_IOMMU_IO_PGTABLE_LPAE=y
 # CONFIG_IOMMU_IO_PGTABLE_LPAE_SELFTEST is not set
@@ -4759,6 +4895,15 @@ CONFIG_ARM_SMMU=y
 CONFIG_QCOM_LAZY_MAPPING=y
 # CONFIG_IOMMU_DEBUG is not set
 # CONFIG_QCOM_IOMMU is not set
+
+#
+# Remoteproc drivers
+#
+# CONFIG_REMOTEPROC is not set
+
+#
+# Rpmsg drivers
+#
 CONFIG_RPMSG=y
 CONFIG_RPMSG_CHAR=y
 CONFIG_RPMSG_QCOM_GLINK_NATIVE=y
@@ -5734,6 +5879,7 @@ CONFIG_RCU_PANIC_ON_STALL=1
 # CONFIG_LATENCYTOP is not set
 CONFIG_NOP_TRACER=y
 CONFIG_HAVE_FUNCTION_TRACER=y
+CONFIG_HAVE_FUNCTION_GRAPH_TRACER=y
 CONFIG_HAVE_DYNAMIC_FTRACE=y
 CONFIG_HAVE_FTRACE_MCOUNT_RECORD=y
 CONFIG_HAVE_SYSCALL_TRACEPOINTS=y
